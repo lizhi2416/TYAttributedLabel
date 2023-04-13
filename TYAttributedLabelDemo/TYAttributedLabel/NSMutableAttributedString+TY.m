@@ -155,8 +155,15 @@
     lineBreakStyle.value = &lineBreakMode;
     lineBreakStyle.valueSize = sizeof(lineBreakMode);
     
+    //书写方向
+    CTWritingDirection direction = kCTWritingDirectionLeftToRight;
+    CTParagraphStyleSetting writingDirectionStyle;
+    writingDirectionStyle.spec = kCTParagraphStyleSpecifierBaseWritingDirection;
+    writingDirectionStyle.value = &direction;
+    writingDirectionStyle.valueSize = sizeof(direction);
+    
     // 创建样式数组
-    CTParagraphStyleSetting settings[] = {alignmentStyle ,lineSpaceStyle, paragraphSpaceStyle, lineBreakStyle};
+    CTParagraphStyleSetting settings[] = {alignmentStyle ,lineSpaceStyle, paragraphSpaceStyle, lineBreakStyle, writingDirectionStyle};
     CTParagraphStyleRef paragraphStyle = CTParagraphStyleCreate(settings, sizeof(settings) / sizeof(settings[0]));	// 设置样式
     
     // 设置段落属性
